@@ -33,6 +33,7 @@ app.include_router(router_pages)
 app.include_router(router_chat)
 
 origins = [
+    "https://global-messenger.onrender.com",
     "http://127.0.0.1:8000",
 ]
 
