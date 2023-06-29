@@ -1,4 +1,4 @@
 /.env
 /venv/
 /test.txt
-/migrations/versions/
+/.env_render
