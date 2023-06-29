@@ -4,9 +4,12 @@ from fastapi.staticfiles import StaticFiles
 
 from src.auth.base_config import fastapi_users, auth_backend
 from src.auth.schemas import UserRead, UserCreate
+from src.tasks.router import router as router_tasks
+from src.pages.router import router as router_pages
+from src.chat.router import router as router_chat
 
 app = FastAPI(
-    title='Global messanger'
+    title='Global messenger'
 )
 
 app.mount('/src/static', StaticFiles(directory='src/static'), name='static')
@@ -24,9 +27,13 @@ app.include_router(
 )
 
 
+# app.include_router(router_operation)
+app.include_router(router_tasks)
+app.include_router(router_pages)
+app.include_router(router_chat)
 
 origins = [
-    "http://localhost:3000",
+    "http://127.0.0.1:8000",
 ]
 
 app.add_middleware(
