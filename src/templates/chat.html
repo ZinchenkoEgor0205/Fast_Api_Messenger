@@ -9,13 +9,13 @@
     <div class="main-history">
         <ul id='messages'></ul>
     </div>
-    <h2>Your ID: <span id="ws-id"></span></h2>
+    <h2 class="user-id">Your ID: <span id="ws-id"></span></h2>
     <form class="main-footer" onsubmit="sendMessage(event)">
-        <input type="text" class="main-footer-input" id="messageText">
+        <input type="text" class="main-footer-input" id="messageText" placeholder="Write your message">
         <button class="main-footer-btn">Send</button>
     </form>
 
-    <script>
+    <script defer>
         async function getLastMessages() {
             const url = 'http://localhost:8000/chat/last_messages'
             const response = await fetch(url, {
@@ -38,6 +38,7 @@
             let message = document.createElement('li')
             let content = document.createTextNode(msg)
             message.appendChild(content)
+            message.classList.add('message')
             messages.appendChild(message)
         }
 

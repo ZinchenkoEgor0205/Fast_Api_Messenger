@@ -3,6 +3,16 @@ html {
     color: #4A4A4A;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 nav {
     display: flex;
     width: 1920px;
@@ -11,6 +21,8 @@ nav {
     align-items: center;
     margin-bottom: 120px;
 }
+
+
 
 .nav-title {
     display: flex;
@@ -22,3 +34,5 @@ nav {
     font-size: 50px;
     font-weight: 600;
 }
+
+
