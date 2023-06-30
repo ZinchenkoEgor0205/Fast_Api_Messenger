@@ -18,8 +18,8 @@
     <script defer>
         async function getLastMessages() {
             {#TODO switch to second url if deploying#}
-            const url = 'http://localhost:8000/chat/last_messages'
-            {#const url = 'https://global-messenger.onrender.com/chat/last_messages'#}
+            {#const url = 'http://localhost:8000/chat/last_messages'#}
+            const url = 'https://global-messenger.onrender.com/chat/last_messages'
             const response = await fetch(url, {
                 method: 'GET'
             })
@@ -42,7 +42,13 @@
             message.appendChild(content)
             message.classList.add('message')
             messages.appendChild(message)
-            if (messages.childElementCount >= 16) {
+
+            let history = document.getElementsByClassName('main-history')[0]
+            {#console.log(history.getBoundingClientRect())#}
+            {#let historyWindowSize = messages.#}
+            {#console.log(messages.getBoundingClientRect())#}
+
+            if (messages.getBoundingClientRect().height >= history.getBoundingClientRect().height * 0.95) {
                 messages.removeChild(messages.firstChild)
             }
         }
