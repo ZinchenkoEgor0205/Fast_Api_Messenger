@@ -51,7 +51,7 @@ manager = ConnectionManager()
 async def get_last_messages(
         session: AsyncSession = Depends(get_async_session),
 ) -> List[MessagesModel]:
-    query = select(Messages).order_by(Messages.id.desc()).limit(5)
+    query = select(Messages).order_by(Messages.id.desc()).limit(20)
     messages = await session.execute(query)
     return messages.scalars().all()
 
@@ -62,7 +62,7 @@ async def websocket_endpoint(websocket: WebSocket, client_id: int):
     try:
         while True:
             data = await websocket.receive_text()
-            await manager.broadcast(f"Client #{client_id} says: {data}", add_to_db=True)
+            await manager.broadcast(f"User #{client_id} says: {data}", add_to_db=True)
     except WebSocketDisconnect:
         manager.disconnect(websocket)
-        await manager.broadcast(f"Client #{client_id} left the chat", add_to_db=False)
+        await manager.broadcast(f"User #{client_id} left the chat", add_to_db=False)
