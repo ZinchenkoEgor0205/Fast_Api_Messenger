@@ -49,3 +49,18 @@ nav {
         font-size: 40px;
     }
 }
+
+@media screen and (max-width: 900px) {
+
+    nav {
+        height: 40px;
+        padding-left: 30px;
+        margin-bottom: 20px;
+    }
+
+
+    .nav-title {
+        width: 100%;
+        font-size: 30px;
+    }
+}
