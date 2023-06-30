@@ -17,8 +17,9 @@
 
     <script defer>
         async function getLastMessages() {
-            {#const url = 'http://localhost:8000/chat/last_messages'#}
-            const url = 'https://global-messenger.onrender.com/chat/last_messages'
+            {#TODO switch to second url if deploying#}
+            const url = 'http://localhost:8000/chat/last_messages'
+            {#const url = 'https://global-messenger.onrender.com/chat/last_messages'#}
             const response = await fetch(url, {
                 method: 'GET'
             })
@@ -41,6 +42,9 @@
             message.appendChild(content)
             message.classList.add('message')
             messages.appendChild(message)
+            if (messages.childElementCount >= 16) {
+                messages.removeChild(messages.firstChild)
+            }
         }
 
         let client_id = Date.now()
