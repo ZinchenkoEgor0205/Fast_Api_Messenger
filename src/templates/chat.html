@@ -29,7 +29,7 @@
         getLastMessages()
             .then(messages => {
                 appendMessage("Previous messages:")
-                messages.forEach(msg => {
+                messages.reverse().forEach(msg => {
                     appendMessage(msg.message)
                 })
                 appendMessage("\nNew messages:")
